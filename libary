@@ -1,0 +1,57 @@
+namespace LibaryForFormsCalc
+{
+    public class Calc
+    {
+        public double dA;
+        public double dB;
+        public string temp;
+        public string a;
+        public string b;
+        public string Temp
+        {
+            set
+            {
+                temp = value;
+            }
+        }
+
+        public double A
+        {
+            set
+            {
+                a = value.ToString();
+            }
+        }
+
+        public double B
+        {
+            set
+            {
+                b = value.ToString();
+            }
+        }
+
+        public double Action()
+        {
+            dA = Convert.ToDouble(a);
+            dB = Convert.ToDouble(b);
+
+            switch (temp)
+            {
+                case "+":
+                    dA += dB;
+                    break;
+                case "-":
+                    dA -= dB;
+                    break;
+                case "*":
+                    dA *= dB;
+                    break;
+                case "/":
+                    dA /= dB;
+                    break;
+            }
+            return dA;
+        }
+    }
+}
