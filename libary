@@ -4,31 +4,23 @@ namespace LibaryForFormsCalc
     {
         public double dA;
         public double dB;
-        public string temp;
+        public string action;
         public string a;
         public string b;
-        public string Temp
+        public string getSign
         {
-            set
-            {
-                temp = value;
-            }
+            set { action = value; }
+            get { return action; }
         }
 
         public double A
         {
-            set
-            {
-                a = value.ToString();
-            }
+            set { a = value.ToString(); }
         }
 
         public double B
         {
-            set
-            {
-                b = value.ToString();
-            }
+            set { b = value.ToString(); }
         }
 
         public double Action()
@@ -36,7 +28,7 @@ namespace LibaryForFormsCalc
             dA = Convert.ToDouble(a);
             dB = Convert.ToDouble(b);
 
-            switch (temp)
+            switch (action)
             {
                 case "+":
                     dA += dB;
