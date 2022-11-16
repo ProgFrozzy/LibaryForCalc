@@ -2,12 +2,14 @@ namespace LibaryForFormsCalc
 {
     public class Calc
     {
+        public delegate void DividedByZero();
+        public event DividedByZero divByZero;
+
         public double dA;
         public double dB;
         public string action;
         public string a;
         public string b;
-        
         public string getSign
         {
             set { action = value; }
@@ -22,27 +24,35 @@ namespace LibaryForFormsCalc
         public double B
         {
             set { b = value.ToString(); }
+            get { return Convert.ToDouble(b); }
         }
 
         public double Action()
         {
-            dA = Convert.ToDouble(a);
-            dB = Convert.ToDouble(b);
-
-            switch (action)
+            if (getSign == "/" & Convert.ToDouble(b) == 0)
             {
-                case "+":
-                    dA += dB;
-                    break;
-                case "-":
-                    dA -= dB;
-                    break;
-                case "*":
-                    dA *= dB;
-                    break;
-                case "/":
-                    dA /= dB;
-                    break;
+                divByZero();
+            }
+            else
+            {
+                dA = Convert.ToDouble(a);
+                dB = Convert.ToDouble(b);
+
+                switch (action)
+                {
+                    case "+":
+                        dA += dB;
+                        break;
+                    case "-":
+                        dA -= dB;
+                        break;
+                    case "*":
+                        dA *= dB;
+                        break;
+                    case "/":
+                        dA /= dB;
+                        break;
+                }
             }
             return dA;
         }
